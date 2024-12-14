@@ -8,7 +8,7 @@
 #---------------------------------------------------------------------
 name: CI-CD-Pipeline-to-AWS-ElasticBeastalk
 env:
-  EB_PACKAGE_S3_BUCKET_NAME : "elasticbeanstalk-eu-central-1-774305599718 "
+  EB_PACKAGE_S3_BUCKET_NAME : "elasticbeanstalk-eu-central-1-774305599718"
   EB_APPLICATION_NAME       : "MyFlask"
   EB_ENVIRONMENT_NAME       : "MyFlask-env"
   DEPLOY_PACKAGE_NAME       : "flask_app_${{ github.sha }}.zip"
@@ -24,11 +24,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Print Happy Message for CI finish
-      run : echo "CI Pipeline part Finished successfully!"
-
+   
     - name: Create ZIP deployment package
       run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+
+    - name: Print Happy Message for CI finish
+      run : echo "CI Pipeline part Finished successfully!"
 
   my_cd_part:
     runs-on: ubuntu-latest
