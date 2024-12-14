@@ -28,7 +28,7 @@ jobs:
       run : echo "CI Pipeline part Finished successfully!"
 
     - name: Create ZIP deployment package
-      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ *.git*
+      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
 
   my_cd_part:
     runs-on: ubuntu-latest
